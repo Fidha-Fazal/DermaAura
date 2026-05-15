@@ -1,0 +1,50 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.11.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\fidha\OneDrive\Desktop\DermaAura\DermaAura
+plugins: flask-1.3.0
+collected 12 items / 11 deselected / 1 selected
+
+test_features.py F                                                       [100%]
+
+================================== FAILURES ===================================
+________________________________ test_features ________________________________
+
+client = <FlaskClient <Flask 'app'>>
+
+    def test_features(client):
+        """Test shop, search, and categories using shared client fixture"""
+        # put a couple of products into the clean test database
+        with client.application.app_context():
+            # ensure fresh schema (fixture already did this)
+            p1 = Product(name='Hydrating Cream', category='skin', price=299.0, description='hydrating formula')
+            p2 = Product(name='Anti-Dandruff Shampoo', category='hair', price=399.0, description='anti dandruff solution')
+            db.session.add_all([p1, p2])
+            db.session.commit()
+            total_products = Product.query.count()
+            skin_products = Product.query.filter_by(category='skin').count()
+            hair_products = Product.query.filter_by(category='hair').count()
+            print(f"\u2713 Database has {total_products} products")
+            print(f"  - Skincare: {skin_products}")
+            print(f"  - Haircare: {hair_products}\n")
+    
+        # TEST 2: Shop page
+        response = client.get('/shop')
+        print(f"\u2713 Shop page status: {response.status_code}")
+        html = response.get_data(as_text=True)
+        assert 'class="card-title"' in html or 'class="card-title ' in html, "no card-title in shop page"
+>       assert html.find('<img src=') < html.find('class="card-title"'), "product title appears before image"
+E       AssertionError: product title appears before image
+E       assert 12272 < -1
+E        +  where 12272 = <built-in method find of str object at 0x00000176C1786010>('<img src=')
+E        +    where <built-in method find of str object at 0x00000176C1786010> = '<!DOCTYPE html>\n<html lang="en">\n\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=dev...style.animationDelay = el.getAttribute(\'data-delay\') + \'s\';\n        });\n    });\n</script>\n\n</body>\n\n</html>'.find
+E        +  and   -1 = <built-in method find of str object at 0x00000176C1786010>('class="card-title"')
+E        +    where <built-in method find of str object at 0x00000176C1786010> = '<!DOCTYPE html>\n<html lang="en">\n\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=dev...style.animationDelay = el.getAttribute(\'data-delay\') + \'s\';\n        });\n    });\n</script>\n\n</body>\n\n</html>'.find
+
+test_features.py:30: AssertionError
+---------------------------- Captured stdout setup ----------------------------
+DEBUG: app is <Flask 'app'> (type: <class 'flask.app.Flask'>), __name__ is app.routes
+---------------------------- Captured stdout call -----------------------------
+\u2713 Database has 2 products\n  - Skincare: 1\n  - Haircare: 1\n\n\u2713 Shop page status: 200
+=========================== short test summary info ===========================
+FAILED test_features.py::test_features - AssertionError: product title appear...
+====================== 1 failed, 11 deselected in 4.75s =======================

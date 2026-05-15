@@ -1,0 +1,80 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.11.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\fidha\OneDrive\Desktop\DermaAura
+plugins: anyio-4.9.0
+collected 7 items
+
+test_ai_scanner.py FFFFEEE                                               [100%]
+
+=================================== ERRORS ====================================
+______ ERROR at setup of test_analyze_and_home_pages_keep_skin_quiz_flow ______
+conftest.py:30: in app
+    test_app = create_app()
+               ^^^^^^^^^^^^
+app\__init__.py:40: in create_app
+    from app import routes  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^
+E     File "C:\Users\fidha\OneDrive\Desktop\DermaAura\app\routes.py", line 685
+E       @app.route('/payment/success')
+E       ^
+E   IndentationError: expected an indented block after function definition on line 682
+______ ERROR at setup of test_skin_scanner_recommends_oily_acne_products ______
+conftest.py:30: in app
+    test_app = create_app()
+               ^^^^^^^^^^^^
+app\__init__.py:40: in create_app
+    from app import routes  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^
+E     File "C:\Users\fidha\OneDrive\Desktop\DermaAura\app\routes.py", line 685
+E       @app.route('/payment/success')
+E       ^
+E   IndentationError: expected an indented block after function definition on line 682
+_________ ERROR at setup of test_upload_photo_path_works_for_analysis _________
+conftest.py:30: in app
+    test_app = create_app()
+               ^^^^^^^^^^^^
+app\__init__.py:40: in create_app
+    from app import routes  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^
+E     File "C:\Users\fidha\OneDrive\Desktop\DermaAura\app\routes.py", line 685
+E       @app.route('/payment/success')
+E       ^
+E   IndentationError: expected an indented block after function definition on line 682
+================================== FAILURES ===================================
+____________ test_final_skin_label_scoring_prefers_oily_acne_prone ____________
+test_ai_scanner.py:19: in test_final_skin_label_scoring_prefers_oily_acne_prone
+    from app import routes
+E     File "C:\Users\fidha\OneDrive\Desktop\DermaAura\app\routes.py", line 685
+E       @app.route('/payment/success')
+E       ^
+E   IndentationError: expected an indented block after function definition on line 682
+______________ test_decode_image_payload_supports_burst_capture _______________
+test_ai_scanner.py:43: in test_decode_image_payload_supports_burst_capture
+    from app import routes
+E     File "C:\Users\fidha\OneDrive\Desktop\DermaAura\app\routes.py", line 685
+E       @app.route('/payment/success')
+E       ^
+E   IndentationError: expected an indented block after function definition on line 682
+________________ test_merge_prediction_results_averages_frames ________________
+test_ai_scanner.py:54: in test_merge_prediction_results_averages_frames
+    from app import routes
+E     File "C:\Users\fidha\OneDrive\Desktop\DermaAura\app\routes.py", line 685
+E       @app.route('/payment/success')
+E       ^
+E   IndentationError: expected an indented block after function definition on line 682
+_____________ test_combination_path_uses_quiz_and_visual_balance ______________
+test_ai_scanner.py:77: in test_combination_path_uses_quiz_and_visual_balance
+    from app import routes
+E     File "C:\Users\fidha\OneDrive\Desktop\DermaAura\app\routes.py", line 685
+E       @app.route('/payment/success')
+E       ^
+E   IndentationError: expected an indented block after function definition on line 682
+=========================== short test summary info ===========================
+FAILED test_ai_scanner.py::test_final_skin_label_scoring_prefers_oily_acne_prone
+FAILED test_ai_scanner.py::test_decode_image_payload_supports_burst_capture
+FAILED test_ai_scanner.py::test_merge_prediction_results_averages_frames -   ...
+FAILED test_ai_scanner.py::test_combination_path_uses_quiz_and_visual_balance
+ERROR test_ai_scanner.py::test_analyze_and_home_pages_keep_skin_quiz_flow -  ...
+ERROR test_ai_scanner.py::test_skin_scanner_recommends_oily_acne_products -  ...
+ERROR test_ai_scanner.py::test_upload_photo_path_works_for_analysis -   File ...
+========================= 4 failed, 3 errors in 0.82s =========================
